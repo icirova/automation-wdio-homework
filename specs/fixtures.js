@@ -8,3 +8,5 @@ export const contactPhone = 774952432;
 export const contactEmail = `email-${timestamp}@czechitas.com`;
 export const startDate = '2023-05-02';
 export const endDate = '2023-05-12';
+
+
