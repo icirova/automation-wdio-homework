@@ -49,8 +49,6 @@ describe('Objednávka pro MŠ/ZŠ', () => {
     it(
         'Vyplnění a následné odeslání objednávky', () => {
 
-            const client = $('#client')
-            const completeAddress = $('#address')
             const ico = $('#ico')
             const substitute = $('#substitute')
             const name = $('#contact_name')
@@ -67,8 +65,6 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const toastMessage = $('.toast-message')
             const confirmation = $('h3=Děkujeme za objednávku')
 
-            client.setValue(clientName)
-            completeAddress.setValue(clientAddress)
             ico.setValue(ICO)
 
             substitute.setValue(substituteName)
@@ -79,11 +75,11 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             end.setValue(endDate)
 
             campButton.click()
+
             dayTimeCamp.selectByVisibleText('Odpolední')
             students.setValue(20)
             age.setValue(12)
             adults.setValue(2)
-
             save.click()
 
             expect(confirmation).toBeDisplayed
