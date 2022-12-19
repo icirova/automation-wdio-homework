@@ -22,22 +22,6 @@ describe('Objednávka pro MŠ/ZŠ', () => {
     })
 
     it(
-        'Funkční navigace', () => {
-
-            const substitute = $('#substitute')
-            const order = $('h3*=Objednávka akce')
-
-            browser.url('')
-            $('a=Pro učitelé').click()
-            $('a=Objednávka pro MŠ/ZŠ').click()
-
-            expect(order).toBeDisplayed()
-            expect(substitute).toBeDisplayed()
-
-        }
-    )
-
-    it(
         'Vyplnění IČO a automatické načtení jména a adresy odběratele z ARESu', () => {
 
             const ico = $('#ico')
@@ -104,11 +88,11 @@ describe('Objednávka pro MŠ/ZŠ', () => {
 
             expect(confirmation).toBeDisplayed
             expect(toastMessage.getText()).toEqual('Objednávka byla úspěšně uložena')
-           
+
         }
     )
 
-    it.only(
+    it(
         'Objednávku nelze odeslat pokud není řádně vyplněna', () => {
 
             const client = $('#client')
@@ -153,5 +137,25 @@ describe('Objednávka pro MŠ/ZŠ', () => {
         }
     )
 
+
+})
+
+describe('Navigace', () => {
+
+    it(
+        'Funkční navigace', () => {
+
+            const substitute = $('#substitute')
+            const order = $('h3*=Objednávka akce')
+
+            browser.url('')
+            $('a=Pro učitelé').click()
+            $('a=Objednávka pro MŠ/ZŠ').click()
+
+            expect(order).toBeDisplayed()
+            expect(substitute).toBeDisplayed()
+
+        }
+    )
 
 })
