@@ -225,7 +225,7 @@ describe('Navigace', () => {
         browser.url('')
     })
     
-    it(
+    it.only(
         'Funkční navigace', () => {
 
             const teachers = getTeachers()
