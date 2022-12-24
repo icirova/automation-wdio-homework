@@ -31,4 +31,9 @@ jobs:
         name: allure-report
         path: allure-report/
         retention-days: 5
-
+    - uses: ravsamhq/notify-slack-action@v2
+      if: always()
+      with:
+        status: ${{ job.status }} 
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

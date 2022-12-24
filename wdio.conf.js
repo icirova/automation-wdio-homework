@@ -61,7 +61,6 @@ exports.config = {
         fs.rmdir(allureTmpDirectory, { recursive: true }, err => {
             if (err) console.log(err);
         });
-        fs.mkdir(allureTmpDirectory);
     },
     onComplete: () => {
         const reportError = new Error('Could not generate Allure report')
