@@ -89,3 +89,37 @@ export function getTeachers() {
 export function getSchool() {
     return $('a=Objednávka pro MŠ/ZŠ')
 }
+
+export function getNatureButton() {
+    return $('#nav-profile-tab')
+}
+export function getNatureStudents() {
+    return $('#nature-students')
+}
+export function getNatureAge() {
+    return $('#nature-age')
+}
+
+export function getNatureAdults() {
+    return $('#nature-adults')
+}
+
+export function getNatureStartTime() {
+    return $('#nature-start_time')
+}
+
+export function getNatureStartFood() {
+    return $('#nature-start_food')
+}
+
+export function getNatureEndTime() {
+    return $('#nature-end_time')
+}
+
+export function getNatureEndFood() {
+    return $('#nature-end_food')
+}
+
+export function getNatureSave () {
+    return $('[name ="school_nature"]')
+}

@@ -29,6 +29,15 @@ import {
     getAdults,
     getSave,
     getConfirmation,
+    getNatureStudents,
+    getNatureButton,
+    getNatureAge,
+    getNatureAdults,
+    getNatureStartTime,
+    getNatureStartFood,
+    getNatureEndTime,
+    getNatureEndFood,
+    getNatureSave
    
 } from '../pages/functions.js'
 
@@ -112,7 +121,68 @@ describe('Objednávka pro MŠ/ZŠ', () => {
 
         }
     )
-    
+
+    it(
+        'Vyplnění a následné odeslání objednávky na školu v přírodě', () => {
+
+            const ico = getIco()
+            ico.setValue(ICO)
+
+            browser.pause(3000)
+
+            const substitute = getSubstitute()
+            substitute.setValue(substituteName)
+
+            browser.pause(3000)
+
+            const name = getName()
+            name.setValue(contactName)
+
+            const tel = getTel()
+            tel.setValue(contactPhone)
+
+            const mail = getMail()
+            mail.setValue(contactEmail)
+
+            const beginning = getBeginning()
+            beginning.setValue(startDate)
+
+            const end = getEnd()
+            end.setValue(endDate)
+
+            const natureButton = getNatureButton()
+            natureButton.click()
+
+            const natureStudents = getNatureStudents()
+            natureStudents.setValue (20)
+
+            const natureAge = getNatureAge ()
+            natureAge.setValue('12-15')
+
+            const natureAdults = getNatureAdults ()
+            natureAdults.setValue(2)
+            
+            const natureStartTime = getNatureStartTime ()
+            natureStartTime.setValue('12:00')
+
+            const natureStartFood = getNatureStartFood ()
+            natureStartFood.selectByVisibleText('Obědem')
+           
+            const natureEndTime = getNatureEndTime ()
+            natureEndTime.setValue('18:00')
+
+            const natureEndFood = getNatureEndFood ()
+            natureEndFood.selectByVisibleText('Večeří')
+
+            const natureSave = getNatureSave()
+            natureSave.click()
+
+            const confirmation = getConfirmation()
+            expect(confirmation).toBeDisplayed
+            expect(getToast().getText()).toEqual('Objednávka byla úspěšně uložena')
+
+        }
+    )
 
     it(
         'Objednávku nelze odeslat pokud není řádně vyplněna', () => {
