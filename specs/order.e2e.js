@@ -93,7 +93,7 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const confirmation = confirmationPage.confirmation
             expect(confirmation).toBeDisplayed
 
-            //expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
+            expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
 
         }
     )
@@ -156,7 +156,7 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const confirmation = confirmationPage.confirmation
             expect(confirmation).toBeDisplayed
 
-            //expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
+            expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
 
         }
     )
