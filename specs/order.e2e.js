@@ -94,6 +94,8 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const confirmation = confirmationPage.confirmation
             expect(confirmation).toBeDisplayed
 
+            browser.pause(2000)
+
             expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
 
         }
