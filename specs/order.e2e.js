@@ -26,7 +26,7 @@ describe('Objednávka pro MŠ/ZŠ', () => {
         orderPage.open()
     })
 
-    it.only(
+    it(
         'Vyplnění IČO a automatické načtení jména a adresy odběratele z ARESu', () => {
 
             const ico = orderPage.ico
