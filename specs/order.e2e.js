@@ -34,7 +34,7 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             browser.keys('Enter')
 
             const toast = orderPage.toast
-            toast.waitForExist()
+            toast.waitForDisplayed()
 
             const client = orderPage.clientName
             const value = getFieldValueById('client')
