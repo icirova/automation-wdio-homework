@@ -36,8 +36,6 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const toast = orderPage.toast
             toast.waitForExist()
 
-            browser.pause(2000)
-
             const client = orderPage.clientName
             const value = getFieldValueById('client')
             expect(client).toBeDisplayed()
