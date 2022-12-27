@@ -11,61 +11,37 @@ import {
 } from './fixtures.js'
 
 import {
-    getFieldValueById,
-    getIco,
-    getToast,
-    getClientName,
-    getAddress,
-    getSubstitute,
-    getName,
-    getTel,
-    getMail,
-    getBeginning,
-    getEnd,
-    getCampButton,
-    getDayTimeCamp,
-    getStudents,
-    getAge,
-    getAdults,
-    getSave,
-    getConfirmation,
-    getNatureStudents,
-    getNatureButton,
-    getNatureAge,
-    getNatureAdults,
-    getNatureStartTime,
-    getNatureStartFood,
-    getNatureEndTime,
-    getNatureEndFood,
-    getNatureSave
-   
+    getFieldValueById
 } from '../pages/functions.js'
+
+import orderPage from '../pages/orderPage.js'
+
+import confirmationPage from '../pages/confirmationPage.js'
 
 
 
 describe('Objednávka pro MŠ/ZŠ', () => {
 
     beforeEach(() => {
-        browser.reloadSession()
-        browser.url('/objednavka/pridat')
+        orderPage.open()
     })
 
     it(
         'Vyplnění IČO a automatické načtení jména a adresy odběratele z ARESu', () => {
 
-            const ico = getIco()
+            const ico = orderPage.ico
             ico.setValue(ICO)
             browser.keys('Enter')
 
-            const toast = getToast()
+            const toast = orderPage.toast
             toast.waitForExist()
 
-            const client = getClientName()
+            const client = orderPage.clientName
             const value = getFieldValueById('client')
             expect(client).toBeDisplayed()
             expect(value).toEqual(clientName)
 
-            const inputAddress = getAddress()
+            const inputAddress = orderPage.address
             const address = getFieldValueById('address')
             expect(inputAddress).toBeDisplayed()
             expect(clientAddress).toEqual(address)
@@ -76,48 +52,49 @@ describe('Objednávka pro MŠ/ZŠ', () => {
     it(
         'Vyplnění a následné odeslání objednávky na příměstský tábor', () => {
 
-            const ico = getIco()
+            const ico = orderPage.ico
             ico.setValue(ICO)
 
-            const substitute = getSubstitute()
+            const substitute = orderPage.substitute
             substitute.setValue(substituteName)
 
-            const name = getName()
+            const name = orderPage.name
             name.setValue(contactName)
 
-            const tel = getTel()
+            const tel = orderPage.tel
             tel.setValue(contactPhone)
 
-            const mail = getMail()
+            const mail = orderPage.mail
             mail.setValue(contactEmail)
 
-            const beginning = getBeginning()
+            const beginning = orderPage.beginning
             beginning.setValue(startDate)
 
-            const end = getEnd()
+            const end = orderPage.end
             end.setValue(endDate)
 
-            const campButton = getCampButton()
+            const campButton =orderPage.campButton
             campButton.click()
 
-            const dayTimeCamp = getDayTimeCamp()
+            const dayTimeCamp = orderPage.dayTimeCamp
             dayTimeCamp.selectByVisibleText('Odpolední')
 
-            const students = getStudents()
+            const students = orderPage.students
             students.setValue(20)
 
-            const age = getAge()
+            const age = orderPage.age
             age.setValue(12)
 
-            const adults = getAdults()
+            const adults = orderPage.adults
             adults.setValue(2)
 
-            const save = getSave()
+            const save = orderPage.save
             save.click()
 
-            const confirmation = getConfirmation()
+            const confirmation = confirmationPage.confirmation
             expect(confirmation).toBeDisplayed
-            expect(getToast().getText()).toEqual('Objednávka byla úspěšně uložena')
+
+            expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
 
         }
     )
@@ -125,61 +102,62 @@ describe('Objednávka pro MŠ/ZŠ', () => {
     it(
         'Vyplnění a následné odeslání objednávky na školu v přírodě', () => {
 
-            const ico = getIco()
+            const ico = orderPage.ico
             ico.setValue(ICO)
 
             browser.pause(3000)
 
-            const substitute = getSubstitute()
+            const substitute = orderPage.substitute
             substitute.setValue(substituteName)
 
             browser.pause(3000)
 
-            const name = getName()
+            const name = orderPage.name
             name.setValue(contactName)
 
-            const tel = getTel()
+            const tel = orderPage.tel
             tel.setValue(contactPhone)
 
-            const mail = getMail()
+            const mail = orderPage.mail
             mail.setValue(contactEmail)
 
-            const beginning = getBeginning()
+            const beginning = orderPage.beginning
             beginning.setValue(startDate)
 
-            const end = getEnd()
+            const end = orderPage.end
             end.setValue(endDate)
 
-            const natureButton = getNatureButton()
+            const natureButton = orderPage.natureButton
             natureButton.click()
 
-            const natureStudents = getNatureStudents()
+            const natureStudents = orderPage.natureStudents
             natureStudents.setValue (20)
 
-            const natureAge = getNatureAge ()
+            const natureAge = orderPage.natureAge
             natureAge.setValue('12-15')
 
-            const natureAdults = getNatureAdults ()
+            const natureAdults = orderPage.natureAdults
             natureAdults.setValue(2)
             
-            const natureStartTime = getNatureStartTime ()
+            const natureStartTime = orderPage.natureStartTime
             natureStartTime.setValue('12:00')
 
-            const natureStartFood = getNatureStartFood ()
+            const natureStartFood = orderPage.natureStartFood
             natureStartFood.selectByVisibleText('Obědem')
            
-            const natureEndTime = getNatureEndTime ()
+            const natureEndTime = orderPage.natureEndTime
             natureEndTime.setValue('18:00')
 
-            const natureEndFood = getNatureEndFood ()
+            const natureEndFood = orderPage.natureEndFood
             natureEndFood.selectByVisibleText('Večeří')
 
-            const natureSave = getNatureSave()
+            const natureSave = orderPage.natureSave
             natureSave.click()
 
-            const confirmation = getConfirmation()
+            const confirmation = confirmationPage.confirmation
             expect(confirmation).toBeDisplayed
-            expect(getToast().getText()).toEqual('Objednávka byla úspěšně uložena')
+
+            expect(confirmationPage.toast.getText()).toEqual('Objednávka byla úspěšně uložena')
 
         }
     )
@@ -187,46 +165,46 @@ describe('Objednávka pro MŠ/ZŠ', () => {
     it(
         'Objednávku nelze odeslat pokud není řádně vyplněna', () => {
 
-            const ico = getIco()
+            const ico = orderPage.ico
             ico.setValue(ICO)
 
-            const substitute = getSubstitute()
+            const substitute = orderPage.substitute
             substitute.setValue(substituteName)
 
-            const name = getName()
+            const name = orderPage.name
             name.setValue(contactName)
 
-            const tel = getTel()
+            const tel = orderPage.tel
             tel.setValue(contactPhone)
 
-            const mail = getMail()
+            const mail = orderPage.mail
             mail.setValue(contactEmail)
 
-            const beginning = getBeginning()
+            const beginning = orderPage.beginning
             beginning.setValue()
 
-            const end = getEnd()
+            const end = orderPage.end
             end.setValue()
 
-            const campButton = getCampButton()
+            const campButton = orderPage.campButton
             campButton.click()
 
-            const dayTimeCamp = getDayTimeCamp()
+            const dayTimeCamp = orderPage.dayTimeCamp
             dayTimeCamp.selectByVisibleText('Odpolední')
 
-            const students = getStudents()
+            const students = orderPage.students
             students.setValue(20)
 
-            const age = getAge()
+            const age = orderPage.age
             age.setValue(12)
 
-            const adults = getAdults()
+            const adults = orderPage.adults
             adults.setValue(2)
 
-            const save = getSave()
+            const save = orderPage.save
             save.click()
 
-            const confirmation = getConfirmation()
+            const confirmation = confirmationPage.confirmation
             expect(confirmation).not.toBeDisplayed()
 
             expect(save).toBeDisplayed()

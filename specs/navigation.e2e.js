@@ -1,9 +1,5 @@
-import {
-    getSubstitute,
-    getOrder,
-    getTeachers,
-    getSchool
-} from '../pages/functions.js'
+
+import orderPage from '../pages/orderPage.js'
 
 describe('Navigace', () => {
 
@@ -11,20 +7,20 @@ describe('Navigace', () => {
         browser.reloadSession()
         browser.url('')
     })
-    
+
     it(
         'Funkční navigace', () => {
 
-            const teachers = getTeachers()
+            const teachers = orderPage.teachers
             teachers.click()
-            
-            const school = getSchool()
+
+            const school = orderPage.school
             school.click()
 
-            const order = getOrder()
+            const order = orderPage.order
             expect(order).toBeDisplayed()
-            
-            const substitute = getSubstitute()
+
+            const substitute = orderPage.substitute
             expect(substitute).toBeDisplayed()
 
         }
