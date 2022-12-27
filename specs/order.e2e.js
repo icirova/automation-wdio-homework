@@ -26,7 +26,7 @@ describe('Objednávka pro MŠ/ZŠ', () => {
         orderPage.open()
     })
 
-    it(
+    it.only(
         'Vyplnění IČO a automatické načtení jména a adresy odběratele z ARESu', () => {
 
             const ico = orderPage.ico
@@ -36,16 +36,17 @@ describe('Objednávka pro MŠ/ZŠ', () => {
             const toast = orderPage.toast
             toast.waitForExist()
 
-            // const client = orderPage.clientName
-            // const value = getFieldValueById('client')
-            // expect(client).toBeDisplayed()
-            // expect(value).toEqual(clientName)
+            browser.pause(2000)
+
+            const client = orderPage.clientName
+            const value = getFieldValueById('client')
+            expect(client).toBeDisplayed()
+            expect(value).toEqual(clientName)
 
             const inputAddress = orderPage.address
             const address = getFieldValueById('address')
             expect(inputAddress).toBeDisplayed()
-            expect(clientAddress).toEqual(address)
-
+            expect(address).toEqual(clientAddress)
         }
     )
 
